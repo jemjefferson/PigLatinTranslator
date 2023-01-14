@@ -18,23 +18,29 @@ try
         {
             case "pig latin":
                 Console.WriteLine("Enter a word or a sentence you would like to be translated into Pig Latin.");
+                Console.WriteLine();
                 string eng = Console.ReadLine();
                 string[] engSentence = eng.Split(" ");
+                Console.WriteLine("");
                 Console.WriteLine("Pig Latin: " + PigLatinTranslator.ConvertToPigLatin(engSentence));
                 Console.WriteLine("RO13Cypher: " + RO13Cypher.ConvertToRO13(engSentence));
+                Console.WriteLine("");
                 break;
             case "english":
                 Console.WriteLine("Enter a word or a sentence in Pig Latin that you would like to be translated into English");
                 string pig = Console.ReadLine();
                 string[] pigSentence = pig.Split(" ");
+                Console.WriteLine("");
                 Console.WriteLine("English: " + EnglishTranslator.ConvertToEnglish(pigSentence));
                 Console.WriteLine("RO13 Cypher: " + RO13Cypher.ConvertToRO13(pigSentence));
+                Console.WriteLine("");
                 break;
             case "exit":
                 exit = true;
                 break;
             default:
                 Console.WriteLine("Enter either Pig Latin or English");
+                Console.WriteLine("");
                 break;
         }
 
