@@ -1,7 +1,7 @@
 ﻿using _10._3_Lab_Jefferson;
 
 Console.Title = "Pig Latin / English Translator";
-Console.WriteLine("Please type in a translator. (PIG LATIN | ENGLISH)");
+Console.WriteLine("Welcome to the PigLatin Translator!");
 
 bool exit = false;
 
@@ -9,7 +9,7 @@ try
 {
     while (!exit)
     {
-
+        Console.WriteLine("Please type in a translator. (PIG LATIN | ENGLISH)");
         Console.Write("]");
         string input = Console.ReadLine();
         input = input.ToLower().Trim();
@@ -21,19 +21,61 @@ try
                 Console.WriteLine();
                 string eng = Console.ReadLine();
                 string[] engSentence = eng.Split(" ");
-                Console.WriteLine("");
-                Console.WriteLine("Pig Latin: " + PigLatinTranslator.ConvertToPigLatin(engSentence));
-                Console.WriteLine("RO13Cypher: " + RO13Cypher.ConvertToRO13(engSentence));
-                Console.WriteLine("");
+                bool engChar = false;
+
+                foreach (string s in engSentence)
+                {
+                    foreach(char c in s)
+                    {
+                        if (Char.IsLetter(c) == false)
+                        {
+                            engChar = true;
+                            break;
+                        }
+                    }
+                }
+                if (engChar == false)
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("Pig Latin: " + PigLatinTranslator.ConvertToPigLatin(engSentence));
+                    Console.WriteLine("RO13Cypher: " + RO13Cypher.ConvertToRO13(engSentence));
+                    Console.WriteLine("");
+                }
+                else
+                {
+                    Console.WriteLine("Please do not enter any special characters or punctuation \n");
+                }
                 break;
             case "english":
-                Console.WriteLine("Enter a word or a sentence in Pig Latin that you would like to be translated into English");
+                Console.WriteLine("Enter a word or a sentence in Pig Latin that you would like to be translated into English.");
                 string pig = Console.ReadLine();
                 string[] pigSentence = pig.Split(" ");
-                Console.WriteLine("");
-                Console.WriteLine("English: " + EnglishTranslator.ConvertToEnglish(pigSentence));
-                Console.WriteLine("RO13 Cypher: " + RO13Cypher.ConvertToRO13(pigSentence));
-                Console.WriteLine("");
+
+                bool pigChar = false;
+
+                foreach (string s in pigSentence)
+                {
+                    foreach (char c in s)
+                    {
+                        if (Char.IsLetter(c) == false)
+                        {
+                            pigChar = true;
+                            break;
+                        }
+                    }
+                }
+                
+                if (pigChar == false)
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("English: " + EnglishTranslator.ConvertToEnglish(pigSentence));
+                    Console.WriteLine("RO13 Cypher: " + RO13Cypher.ConvertToRO13(pigSentence));
+                    Console.WriteLine("");
+                }
+                else
+                {
+                    Console.WriteLine("Please do not enter any special characters or punctuation \n");
+                }
                 break;
             case "exit":
                 exit = true;
